@@ -1,15 +1,16 @@
 package com.tools.calculator.controller;
 
+import com.tools.calculator.dto.CalculatorRequestDto;
+import com.tools.calculator.dto.CalculatorResponseDto;
 import com.tools.calculator.service.CalculatorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+@CrossOrigin("*")
 @RestController
 public class CalculatorController {
 
@@ -17,8 +18,8 @@ public class CalculatorController {
     private CalculatorService calculatorService;
 
     @PostMapping(value = "/calculate")
-    public ResponseEntity<Object> calculate(@RequestBody Map<String, String> payload) {
-        String message = "Hello Dude! How are you ?";
-        return new ResponseEntity<>(message, HttpStatus.OK);
+    public ResponseEntity<Object> calculate(@RequestBody CalculatorRequestDto payload) {
+        CalculatorResponseDto response = calculatorService.calculate(payload);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }
