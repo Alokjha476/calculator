@@ -18,6 +18,7 @@ public class CalculatorController {
 
     @PostMapping(value = "/calculate")
     public ResponseEntity<Object> calculate(@RequestBody Map<String, String> payload) {
-        return new ResponseEntity<>(HttpStatus.OK);
+        String message = "Hello Dude! How are you ?";
+        return new ResponseEntity<>(message, HttpStatus.OK);
     }
 }
