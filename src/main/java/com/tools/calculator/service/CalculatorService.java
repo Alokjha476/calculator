@@ -11,23 +11,25 @@ import java.math.RoundingMode;
 public class CalculatorService {
 
     public CalculatorResponseDto calculate(CalculatorRequestDto requestDto) {
-        BigDecimal total;
+        BigDecimal total = calculation(requestDto);
+        return new CalculatorResponseDto(total);
+    }
+
+    public BigDecimal calculation(CalculatorRequestDto requestDto) {
         switch (requestDto.getOperator()) {
             case "+":
-                total = requestDto.getOperand1().add(requestDto.getOperand2());
-                break;
+                return requestDto.getOperand1().add(requestDto.getOperand2());
             case "-":
-                total = requestDto.getOperand1().subtract(requestDto.getOperand2());
-                break;
+                return requestDto.getOperand1().subtract(requestDto.getOperand2());
             case "/":
-                total = requestDto.getOperand1().divide(requestDto.getOperand2(), RoundingMode.HALF_UP);
-                break;
+                return requestDto.getOperand1().divide(requestDto.getOperand2(), RoundingMode.HALF_UP);
             case "*":
-                total = requestDto.getOperand1().multiply(requestDto.getOperand2());
-                break;
+                return requestDto.getOperand1().multiply(requestDto.getOperand2());
+            case "pow":
+                return BigDecimal.valueOf(Math.pow(requestDto.getOperand1().doubleValue(),
+                        requestDto.getOperand2().doubleValue()));
             default:
-                total = BigDecimal.ZERO;
+                return BigDecimal.ZERO;
         }
-        return new CalculatorResponseDto(total);
     }
 }

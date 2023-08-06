@@ -1,14 +1,23 @@
 package com.tools.calculator.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-@Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class CalculatorResponseDto {
     public BigDecimal total;
+
+    public CalculatorResponseDto() {
+    }
+
+    public CalculatorResponseDto(BigDecimal total) {
+        this.total = total;
+    }
+
+    public BigDecimal getTotal() {
+        return total;
+    }
+
+    public void setTotal(BigDecimal total) {
+        this.total = total;
+    }
 }
