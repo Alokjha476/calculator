@@ -20,7 +20,7 @@ public class CalculatorController {
     @Autowired
     private CalculatorService calculatorService;
 
-    List<String> ops = Arrays.asList("Under-root", "cube-root");
+    List<String> ops = Arrays.asList("Under-root", "cube-root", "sin", "cos", "tan","sinh", "cosh", "tanh", "factorial", "log");
 
     @PostMapping(value = "/calculate")
     public ResponseEntity<Object> calculate(@RequestBody CalculatorRequestDto payload) {
