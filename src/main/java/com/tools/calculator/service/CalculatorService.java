@@ -28,6 +28,11 @@ public class CalculatorService {
             case "pow":
                 return BigDecimal.valueOf(Math.pow(requestDto.getOperand1().doubleValue(),
                         requestDto.getOperand2().doubleValue()));
+            case "Under-root":
+              return   BigDecimal.valueOf(Math.sqrt(requestDto.getOperand1().doubleValue()));
+            case "cube-root":
+                return   BigDecimal.valueOf(Math.cbrt(requestDto.getOperand1().doubleValue()));
+
             default:
                 return BigDecimal.ZERO;
         }
